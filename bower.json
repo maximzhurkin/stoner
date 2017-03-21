@@ -1,0 +1,30 @@
+{
+  "name": "stoner.dev",
+  "description": "SPA boilerplate with gulp",
+  "main": "index.js",
+  "authors": [
+    "Max Zhurkin"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "dist/vendors/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "^2.3.2",
+    "jquery": "^3.1.1",
+    "grunt-modernizr": "^1.0.2",
+    "mustache.js": "mustache#^2.3.0",
+    "reset-stylus": "*",
+    "webfontloader": "^1.6.27",
+    "require-css": "^0.1.10",
+    "jquery_lazyload": "jquery.lazyload#^1.9.7",
+    "matchHeight": "^0.7.2",
+    "pathjs-amd": "^0.10.1"
+  }
+}

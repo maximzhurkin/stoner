@@ -1,0 +1,8 @@
+section.news
+	ul.news-list
+		| {{#news}}
+		li.news-list-item
+			time.news-list-item-date {{date}}
+			a(href='/#/news/{{id}}').news-list-item-title {{title}}
+		| {{/news}}
+	a(href='/#/').news-back На главную

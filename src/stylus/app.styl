@@ -1,0 +1,52 @@
+// Core
+@import './_/config.styl'
+@import './_/mixins.styl'
+// Reset
+@import '../../dist/vendors/reset-stylus/src/reset-stylus.styl'
+// Other
+@import './_/reset.styl'
+@import './_/animations.styl'
+
+*
+	box-sizing border-box
+html
+	height 100%
+	font-size 100%
+	overflow-x hidden
+	overflow-y auto
+body
+	height 100%
+	font-family 'Roboto', Helvetica, Arial, sans-serif
+	font-size 1em
+	line-height 1.25em
+	color color_black
+	background-color color_white
+	position relative
+main.page
+	display none
+	&.active, &.dev
+		display block
+
+
+
+header.header
+	padding 24px
+	h1
+		font-family 'Yesteryear', cursive
+		font-size (36/16em)
+		line-height 1em
+		a
+			color green
+			text-decoration none
+section.hello
+	padding 24px
+	a
+		color blue
+		font-weight 700
+		text-decoration none
+		border-bottom 1px dotted blue
+footer.footer
+	padding 24px
+	small
+		font-weight 100
+		font-size (12/16em)
