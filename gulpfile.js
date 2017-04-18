@@ -21,15 +21,15 @@ gulp.task('serve', function() {
 });
 
 gulp.task('json', function() {
-	return gulp.src('./src/yaml/**/*.yml')
+	return gulp.src('./src/**/*.yml')
 		.pipe(plumber())
 		.pipe(yaml())
-		.pipe(gulp.dest('./dist/components/'))
+		.pipe(gulp.dest('./dist/'))
 		.pipe(browserSync.stream({ match: '**/*.json' }));
 });
 
 gulp.task('html', function() {
-	return gulp.src('./src/pug/**/*.pug')
+	return gulp.src('./src/**/*.pug')
 		.pipe(plumber())
 		.pipe(pug({
 			pretty: '\t' // tabs
@@ -40,39 +40,39 @@ gulp.task('html', function() {
 });
 
 gulp.task('js', function() {
-	return gulp.src('./src/coffee/**/*.coffee')
+	return gulp.src('./src/**/*.coffee')
 		.pipe(plumber())
 		.pipe(environments.development(sourcemaps.init()))
 		.pipe(coffee({ bare: true }))
 		.pipe(environments.production(uglify()))
 		.pipe(environments.development(sourcemaps.write()))
-		.pipe(gulp.dest('./dist/components/'))
+		.pipe(gulp.dest('./dist/'))
 		.pipe(browserSync.stream({ match: '**/*.js' }));
 });
 
 gulp.task('css', function() {
-	return gulp.src(['./src/stylus/**/*.styl', '!./src/stylus/_/*.styl'])
+	return gulp.src(['./src/**/*.styl', '!./src/_/*.styl'])
 		.pipe(plumber())
 		.pipe(environments.development(sourcemaps.init()))
 		.pipe(stylus())
 		.pipe(autoprefixer({ browsers: ['last 2 versions', 'ios >= 7','firefox >=4','safari >=7','IE >=8','android >=2'] }))
 		.pipe(environments.production(csso()))
 		.pipe(environments.development(sourcemaps.write()))
-		.pipe(gulp.dest('./dist/components/'))
+		.pipe(gulp.dest('./dist/'))
 		.pipe(browserSync.stream({ match: '**/*.css' }));
 });
 
 gulp.task('watch', function () {
-	watch(['./src/yaml/**/*.yml'], function() {
+	watch(['./src/**/*.yml'], function() {
 		gulp.start('json');
 	});
-	watch(['./src/coffee/**/*.coffee'], function() {
+	watch(['./src/**/*.coffee'], function() {
 		gulp.start('js');
 	});
-	watch(['./src/stylus/**/*.styl'], function() {
+	watch(['./src/**/*.styl'], function() {
 		gulp.start('css');
 	});
-	watch(['./src/pug/**/*.pug'], function() {
+	watch(['./src/**/*.pug'], function() {
 		gulp.start('html');
 	});
 });
