@@ -1,0 +1,29 @@
+// Core
+@import '../../_/config.styl'
+@import '../../_/mixins.styl'
+// Reset
+@import '../../../dist/assets/vendors/reset-stylus/src/reset-stylus.styl'
+// Other
+@import '../../_/reset.styl'
+@import '../../_/animations.styl'
+
+*
+	box-sizing border-box
+html
+	height 100%
+	font-size 100%
+	overflow-x hidden
+	overflow-y auto
+body
+	height 100%
+	font-family 'Roboto', Helvetica, Arial, sans-serif
+	font-size 1em
+	line-height 1.25em
+	color color_black
+	background-color color_white
+	position relative
+
+[data-page]
+	display none
+	&.active
+		display block

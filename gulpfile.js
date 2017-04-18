@@ -20,22 +20,37 @@ gulp.task('serve', function() {
 	});
 });
 
+gulp.task('vendors', function() {
+	// TODO Таск для сжатия вендоров
+});
+
 gulp.task('json', function() {
 	return gulp.src('./src/**/*.yml')
 		.pipe(plumber())
 		.pipe(yaml())
-		.pipe(gulp.dest('./dist/'))
+		.pipe(gulp.dest('./dist/assets/'))
 		.pipe(browserSync.stream({ match: '**/*.json' }));
 });
 
-gulp.task('html', function() {
-	return gulp.src('./src/**/*.pug')
+gulp.task('index', function() {
+	return gulp.src('./src/*.pug')
 		.pipe(plumber())
 		.pipe(pug({
 			pretty: '\t' // tabs
 		}))
 		.pipe(environments.production(htmlmin({ collapseWhitespace: true })))
 		.pipe(gulp.dest('./dist/'))
+		.pipe(browserSync.reload({ stream: true }));
+});
+
+gulp.task('html', function() {
+	return gulp.src('./src/components/**/*.pug')
+		.pipe(plumber())
+		.pipe(pug({
+			pretty: '\t' // tabs
+		}))
+		.pipe(environments.production(htmlmin({ collapseWhitespace: true })))
+		.pipe(gulp.dest('./dist/assets/components/'))
 		.pipe(browserSync.reload({ stream: true }));
 });
 
@@ -46,7 +61,7 @@ gulp.task('js', function() {
 		.pipe(coffee({ bare: true }))
 		.pipe(environments.production(uglify()))
 		.pipe(environments.development(sourcemaps.write()))
-		.pipe(gulp.dest('./dist/'))
+		.pipe(gulp.dest('./dist/assets/'))
 		.pipe(browserSync.stream({ match: '**/*.js' }));
 });
 
@@ -58,7 +73,7 @@ gulp.task('css', function() {
 		.pipe(autoprefixer({ browsers: ['last 2 versions', 'ios >= 7','firefox >=4','safari >=7','IE >=8','android >=2'] }))
 		.pipe(environments.production(csso()))
 		.pipe(environments.development(sourcemaps.write()))
-		.pipe(gulp.dest('./dist/'))
+		.pipe(gulp.dest('./dist/assets/'))
 		.pipe(browserSync.stream({ match: '**/*.css' }));
 });
 
@@ -72,9 +87,12 @@ gulp.task('watch', function () {
 	watch(['./src/**/*.styl'], function() {
 		gulp.start('css');
 	});
-	watch(['./src/**/*.pug'], function() {
+	watch(['./src/*.pug'], function() {
+		gulp.start('index');
+	});
+	watch(['./src/components/**/*.pug'], function() {
 		gulp.start('html');
 	});
 });
 
-gulp.task('default', ['json', 'html', 'js', 'css', 'watch', 'serve']);
+gulp.task('default', ['json', 'index', 'html', 'js', 'css', 'watch', 'serve']);

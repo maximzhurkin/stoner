@@ -14,20 +14,11 @@ html(lang='ru')
 		link(rel='apple-touch-icon', href='/assets/images/favicons/apple-touch-icon.png')
 		each size in ['57x57', '72x72', '76x76', '114x114', '120x120', '144x144', '152x152', '180x180']
 			link(rel='apple-touch-icon', sizes=size, href='/assets/images/favicons/apple-touch-icon-' + size + '.png')
-		link(type='text/css', rel='stylesheet', href='/elements/app.css')
 	body
 		#app
-			header.header
-				h1.header-logo
-					a(href='/#/') Stoner
-			main.page.page-home
-				section.hello
-					p Привет! это главная страница. Нажми на 
-						a(href='/#/news') эту ссылку
-						|  , чтобы загрузить новости...
-			main.page.page-news
-				#news
-			footer.footer
-				small 2017 Stoner.
-
-		script(defer, data-main='elements/app' src="/vendors/requirejs/require.js")
+			#headerLayout
+			#homePageLayout(data-page='home')
+			#newsPageLayout(data-page='news')
+			#newsDetailPageLayout(data-page='newsDetail')
+			#footerLayout
+		script(defer, data-main='assets/config' src='/assets/vendors/requirejs/require.js')
