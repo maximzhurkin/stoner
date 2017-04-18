@@ -1,6 +1,6 @@
 define [
 	'jquery',
-	'css!/components/news/news'
+	'css!/elements/news/news'
 ], ->
 	_rendered = false
 	{
@@ -10,12 +10,12 @@ define [
 			return
 		render: ->
 			# Получаем данные для рендера
-			$.getJSON '/components/news/news.json', (data) ->
+			$.getJSON '/elements/news/news.json', (data) ->
 				# Получаем шаблон для рендера
-				$.get '/components/news/news.html', (template) ->
+				$.get '/elements/news/news.html', (template) ->
 					# Рендерим
 					$('#news').html Mustache.render(template, data)
-					
+
 					# Меняем состояние на отрендеренно
 					_rendered = true
 					return

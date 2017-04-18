@@ -14,7 +14,7 @@ html(lang='ru')
 		link(rel='apple-touch-icon', href='/assets/images/favicons/apple-touch-icon.png')
 		each size in ['57x57', '72x72', '76x76', '114x114', '120x120', '144x144', '152x152', '180x180']
 			link(rel='apple-touch-icon', sizes=size, href='/assets/images/favicons/apple-touch-icon-' + size + '.png')
-		link(type='text/css', rel='stylesheet', href='/components/app.css')
+		link(type='text/css', rel='stylesheet', href='/elements/app.css')
 	body
 		#app
 			header.header
@@ -30,4 +30,4 @@ html(lang='ru')
 			footer.footer
 				small 2017 Stoner.
 
-		script(defer, data-main='components/app' src="/vendors/requirejs/require.js")
+		script(defer, data-main='elements/app' src="/vendors/requirejs/require.js")

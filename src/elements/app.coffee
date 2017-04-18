@@ -1,4 +1,4 @@
-require.config 
+require.config
 	baseUrl: '/'
 	paths:
 		'jquery':    'vendors/jquery/dist/jquery'
@@ -8,7 +8,7 @@ require.config
 		'webFontLoader':  'vendors/webfontloader/webfontloader'
 		'lazyload':  'vendors/jquery_lazyload/jquery.lazyload'
 		'matchHeight':  'vendors/matchHeight/dist/jquery.matchHeight'
-	shim: 
+	shim:
 		'Mustache': exports: 'Mustache'
 		'lazyload': deps: [ 'jquery' ]
 	map: '*': 'css': 'vendors/require-css/css'
@@ -19,9 +19,9 @@ require [
 	'Path'
 	'Mustache'
 	'webFontLoader'
-	'components/news/news'
+	'elements/news/news'
 ], ($, modernizr, Path, Mustache, webFontLoader, news) ->
-	
+
 	# (fix) Делаем глобальным объектом шаблонизатор
 	window.Mustache = Mustache
 
