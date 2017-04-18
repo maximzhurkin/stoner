@@ -1,5 +1,5 @@
 .DS_Store
 node_modules/
-dist/components/*
+dist/elements/*
 dist/vendors/*
 dist/index.html
