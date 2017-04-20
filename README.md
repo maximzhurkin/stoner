@@ -1,4 +1,4 @@
-# stoner.dev
+# stoner-spa
 
 SPA boilerplate with gulp.
 
