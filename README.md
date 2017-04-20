@@ -5,7 +5,7 @@ SPA boilerplate with gulp.
 ## Install
 1. In project folder run in console
 ```
-git clone https://github.com/maximzhurkin/stoner.git .
+git clone https://github.com/maximzhurkin/stoner-spa.git .
 ```
 2. Install node modules
 ```
