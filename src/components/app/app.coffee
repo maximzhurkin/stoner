@@ -9,7 +9,8 @@ define [
 	'components/home/home'
 	'components/news/news'
 	'components/newsDetail/newsDetail'
-	'css!/assets/components/app/app'
+
+	'css!/templates/project/assets/components/app/app'
 ], (
 	$
 	modernizr

@@ -1,3 +1,4 @@
+include config.pug
 doctype html
 html(lang='ru')
 	head
@@ -9,11 +10,11 @@ html(lang='ru')
 		title Stoner
 		// if IE meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
 		// if lt IE 9 script(src='http://html5shiv.googlecode.com/svn/trunk/html5.js')
-		link(rel='shortcut icon', href='/favicon.ico', type='image/x-icon')
-		link(rel='mask-icon' href='/assets/images/favicons/favicon.svg' color='#000000')
-		link(rel='apple-touch-icon', href='/assets/images/favicons/apple-touch-icon.png')
+		link(rel='shortcut icon', href='/templates/'+templateName+'/assets/images/favicons/favicon.ico', type='image/x-icon')
+		link(rel='mask-icon' href='/templates/'+templateName+'/assets/images/favicons/favicon.svg' color='#000000')
+		link(rel='apple-touch-icon', href='/templates/'+templateName+'/assets/images/favicons/apple-touch-icon.png')
 		each size in ['57x57', '72x72', '76x76', '114x114', '120x120', '144x144', '152x152', '180x180']
-			link(rel='apple-touch-icon', sizes=size, href='/assets/images/favicons/apple-touch-icon-' + size + '.png')
+			link(rel='apple-touch-icon', sizes=size, href='/templates/'+templateName+'/assets/images/favicons/apple-touch-icon-' + size + '.png')
 	body
 		#app
 			#headerLayout
@@ -21,4 +22,4 @@ html(lang='ru')
 			#newsPageLayout(data-page='news')
 			#newsDetailPageLayout(data-page='newsDetail')
 			#footerLayout
-		script(defer, data-main='assets/config' src='/assets/vendors/requirejs/require.js')
+		script(defer, data-main='/templates/'+templateName+'/assets/config' src='/templates/'+templateName+'/assets/vendors/requirejs/require.js')

@@ -11,7 +11,6 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "dist/vendors/",
     "test",
     "tests"
   ],
@@ -24,6 +23,7 @@
     "webfontloader": "^1.6.27",
     "require-css": "^0.1.10",
     "jquery_lazyload": "jquery.lazyload#^1.9.7",
+    "jquery-validation": "^1.16.0",
     "matchHeight": "^0.7.2",
     "pathjs-amd": "^0.10.1"
   }

@@ -28,3 +28,13 @@ gulp
 ```
 gulp --env production
 ```
+
+## New template
+3. Rename 'project' templateName in files:
+- /.bowerrc
+- /.gitignore
+- /gulpfile.js
+- /src/_/config.styl
+- /src/config.pug
+- /src/config.coffee (baseUrl)
+- and all components paths

@@ -1,6 +1,6 @@
 define [
 	'jquery'
-	'css!/assets/components/header/header'
+	'css!/templates/project/assets/components/header/header'
 ], ($) ->
 	_rendered = false
 	{
@@ -10,7 +10,7 @@ define [
 			return
 		render: ->
 			# Получаем шаблон для рендера
-			$.get '/assets/components/header/header.html', (template) ->
+			$.get '/templates/project/assets/components/header/header.html', (template) ->
 				# Рендерим
 				$('#headerLayout').html Mustache.render(template)
 				# Меняем состояние на отрендеренно

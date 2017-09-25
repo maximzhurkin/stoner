@@ -1,6 +1,6 @@
 .DS_Store
 node_modules/
-dist/assets/components/*
-dist/assets/vendors/*
-dist/assets/config.js
+dist/templates/project/assets/components/*
+dist/templates/project/assets/vendors/*
+dist/templates/project/assets/config.js
 dist/index.html

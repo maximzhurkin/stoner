@@ -1,3 +1,5 @@
+var projectName = 'project';
+
 var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),
 	environments = require('gulp-environments'),
@@ -13,10 +15,13 @@ var gulp = require('gulp'),
 	sourcemaps = require('gulp-sourcemaps'),
 	browserSync = require('browser-sync').create();
 
-gulp.task('serve', function() {
+gulp.task('browser-sync', function() {
 	browserSync.init({
 		server: './dist/', // or proxy: 'stoner.dev:8888'
-		notify: false
+		browser: 'google chrome',
+		notify: false,
+		host: 'localhost',
+		port: 9000
 	});
 });
 
@@ -28,12 +33,12 @@ gulp.task('json', function() {
 	return gulp.src('./src/**/*.yml')
 		.pipe(plumber())
 		.pipe(yaml())
-		.pipe(gulp.dest('./dist/assets/'))
+		.pipe(gulp.dest('./dist/templates/' + projectName + '/assets/'))
 		.pipe(browserSync.stream({ match: '**/*.json' }));
 });
 
 gulp.task('index', function() {
-	return gulp.src('./src/*.pug')
+	return gulp.src('./src/index.pug')
 		.pipe(plumber())
 		.pipe(pug({
 			pretty: '\t' // tabs
@@ -50,7 +55,7 @@ gulp.task('html', function() {
 			pretty: '\t' // tabs
 		}))
 		.pipe(environments.production(htmlmin({ collapseWhitespace: true })))
-		.pipe(gulp.dest('./dist/assets/components/'))
+		.pipe(gulp.dest('./dist/templates/' + projectName + '/assets/components/'))
 		.pipe(browserSync.reload({ stream: true }));
 });
 
@@ -61,7 +66,7 @@ gulp.task('js', function() {
 		.pipe(coffee({ bare: true }))
 		.pipe(environments.production(uglify()))
 		.pipe(environments.development(sourcemaps.write()))
-		.pipe(gulp.dest('./dist/assets/'))
+		.pipe(gulp.dest('./dist/templates/' + projectName + '/assets/'))
 		.pipe(browserSync.stream({ match: '**/*.js' }));
 });
 
@@ -73,7 +78,7 @@ gulp.task('css', function() {
 		.pipe(autoprefixer({ browsers: ['last 2 versions', 'ios >= 7','firefox >=4','safari >=7','IE >=8','android >=2'] }))
 		.pipe(environments.production(csso()))
 		.pipe(environments.development(sourcemaps.write()))
-		.pipe(gulp.dest('./dist/assets/'))
+		.pipe(gulp.dest('./dist/templates/' + projectName + '/assets/'))
 		.pipe(browserSync.stream({ match: '**/*.css' }));
 });
 
@@ -95,4 +100,4 @@ gulp.task('watch', function () {
 	});
 });
 
-gulp.task('default', ['json', 'index', 'html', 'js', 'css', 'watch', 'serve']);
+gulp.task('default', ['json', 'index', 'html', 'js', 'css', 'watch', 'browser-sync']);
